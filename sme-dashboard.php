@@ -1,5 +1,15 @@
 <?php
 session_start();
+require("service/connection.php");
+if(!isset($_SESSION['userid'])) {
+    header("location:login.html");
+}
+$userid = $_SESSION['userid'];
+$role = $_SESSION['role'];
+$username = $_SESSION["name"];
+$phone = $_SESSION["phone"];
+
+
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +60,7 @@ session_start();
           <img src="assests/adminlte/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p><?=$username?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
