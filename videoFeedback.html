@@ -179,6 +179,25 @@ textarea
         
         <div id="video-details">/</div>
         <!-- 2. This code loads the IFrame Player API code asynchronously. -->
+<p id="demo"></p>
+
+<script>
+
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        myObj = JSON.parse(this.responseText);
+        vId = myObj.name;
+    }
+};
+xmlhttp.open("GET", "json_demo.txt", true);
+xmlhttp.send();
+
+</script>
+
+
+
+
         <script src="https://www.youtube.com/iframe_api" async></script>
         <script>
             // 3. This function creates an <iframe> (and YouTube player)
@@ -188,7 +207,8 @@ textarea
                 player = new YT.Player('player', {
                     height: '390',
                     width: '640',
-                    videoId: 'Oaj8l0lKJoY',
+                  //  videoId: 'Oaj8l0lKJoY',
+                  videoId:vId,
                     autoplay: 0,
                     events: {
                         'onReady': onPlayerReady,
