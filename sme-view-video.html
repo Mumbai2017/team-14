@@ -261,7 +261,7 @@
     <section class="content">
 
         <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-9">
           <!-- Box Comment -->
           <div class="box box-widget">
             <div class="box-header with-border">
@@ -273,31 +273,10 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                <div class="col-md-12">
-            <!-- /.box-header -->
-            <div class="box-body">
-              <dl class="dl-horizontal">
-                <dt>Description lists</dt>
-                <dd>A description list is perfect for defining terms.</dd>
-                <dt>Euismod</dt>
-                <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-                <dd>Donec id elit non mi porta gravida at eget metus.</dd>
-                <dt>Malesuada porta</dt>
-                <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-                <dt>Felis euismod semper eget lacinia</dt>
-                <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-                  sit amet risus.
-                </dd>
-              </dl>
-            </div>
-            <!-- /.box-body -->
-        </div>
-
-
-              <!-- Social sharing buttons -->
-              <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
-              <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
-              <span class="pull-right text-muted">45 likes - 2 comments</span>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tMWkeBIohBs?start=100"
+                            frameborder="0" allowfullscreen></iframe>
+                  </div>
             </div>
             <!-- /.box-body -->
             <div class="box-footer box-comments">
@@ -336,7 +315,15 @@
               <form action="#" method="post">
                 <!-- .img-push is used to add margin to elements next to floating images -->
                 <div class="img-push">
+                    <div class="col-lg-3 col-md-2 col-sm-12">
+                  <input type="text" class="form-control input-sm" placeholder="Press enter the timestamp">
+                    </div>
+                    <div class="col-lg-6 col-md-8 col-sm-12">
                   <input type="text" class="form-control input-sm" placeholder="Press enter to post comment">
+                    </div>
+                    <div class="col-lg-3 col-md-2 col-sm-12">
+                    <input type="submit" class="btn bg-navy" />
+                    </div>
                 </div>
               </form>
             </div>
@@ -347,6 +334,58 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
+        <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Responsive Hover Table</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
+                <tr>
+                  <th>ID</th>
+                  <th>User</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th>Reason</th>
+                </tr>
+                <tr>
+                  <td>183</td>
+                  <td>John Doe</td>
+                  <td>11-7-2014</td>
+                  <td><span class="label label-success">Approved</span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                </tr>
+                <tr>
+                  <td>219</td>
+                  <td>Alexander Pierce</td>
+                  <td>11-7-2014</td>
+                  <td><span class="label label-warning">Pending</span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                </tr>
+                <tr>
+                  <td>657</td>
+                  <td>Bob Doe</td>
+                  <td>11-7-2014</td>
+                  <td><span class="label label-primary">Approved</span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                </tr>
+                <tr>
+                  <td>175</td>
+                  <td>Mike Doe</td>
+                  <td>11-7-2014</td>
+                  <td><span class="label label-danger">Denied</span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                </tr>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+      </div>
+        
     </section>
     <!-- /.content -->
   </div>
@@ -375,5 +414,6 @@
 <script src="assests/adminlte/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="assests/adminlte/js/demo.js"></script>
+    
 </body>
 </html>
