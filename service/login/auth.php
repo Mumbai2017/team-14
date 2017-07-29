@@ -9,6 +9,19 @@
         if($result->num_rows > 0){
             $ouput["code"] = 1;
             $output["msg"] = "Authenticated";
+            $data = $result->fetch_assoc();
+            $result = $con->query("SELECT * FROM  `roles` AS r,  `user_roles` AS ur WHERE ur.`role_id` = r.`role_id` and ur.user_id = ".$data["user_id"] );
+            $userrole = $result->fetch_assoc();
+
+            //Sessions
+            session_start();
+            $_SESSION["userid"] = $data["user_id"];
+            $_SESSION["name"]= $data["user_email"];
+            $_SESSION["role"]= $userrole["role"];
+            $_SESSION["name"] = $data["user_lastname"]." ".$data["user_firstname"];
+            $_SESSION["email"] = $data["user_email"];
+            $_SESSION["phone"] = $data["user_phone"];
+
             echo json_encode($output);
         }
         else{
