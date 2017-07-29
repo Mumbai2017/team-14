@@ -10,7 +10,6 @@
      //REquired Inputs
      $lpid = $con->real_escape_string($_POST["lp_id"]);
      $sql = "SELECT * FROM  `feedback_lp` AS fv, user AS u WHERE fv.sme_id = u.user_id AND fv.`lp_id` = $lpid";
-     echo $sql;
      $result = $con->query($sql);
      if($result->num_rows > 0 ){
          $output["total"] = $result->num_rows;
