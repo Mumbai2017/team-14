@@ -7,17 +7,18 @@
      $lp_id = $con->real_escape_string($$_POST["lp_id"]);
      $sme_id = $con->real_escape_string($$_POST["sme_id"]);
      //storing data to the db
-        $sql="INSERT INTO feedback_lp(sme_id,lp_id,feedback,ts) values ($sme_id."','".$lp_id."','".$message.",NOW());
-		
-     $stmt = $con->prepare($sql);
-     if($stmt){
-        
-             if($stmt->execute()){
-                
-                    $output["code"] = 1;
-                    $outpu["msg"]="feedback submitted";
-                }
-             }
+     $sql="INSERT INTO feedback_lp(sme_id,lp_id,feedback) values ($sme_id,$lp_id,$feedback)";
+     if($con->query($sql)){
+         $output["code"] = 1;
+         $output["msg"] = "FeedBack Inserted";
+         echo json_encode($output);
+     }
+     else{
+         $output["code"] = 2;
+         $output["msg"] = "FeedBack Not Inserted";
+         echo json_encode($output);
+     }
+
          
      
  }
