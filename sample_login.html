@@ -21,7 +21,10 @@
 <script>
 function submitForm() {
 
-var data = $("#login-form").serialize();
+//var data = $("#login-form").serialize();
+ var data ={};
+    data.username = document.getElementsByName("username");
+    data.password = document.getElementsByName("password");
 
 console.log(data);
 
