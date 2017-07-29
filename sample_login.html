@@ -1,0 +1,41 @@
+<div class="login-form">
+
+<h1>Login to CEQUE</h1>
+
+<form method="POST" id = "login-form">
+
+<input type="text" name="username">Username <br>
+
+<input type="password" name="password">Password <br>
+
+
+<button type="button" class="btn btn-large btn-block btn-default" onclick = "submitForm()">LOGIN</button>
+
+
+</form>
+
+</div>
+
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+<script>
+function submitForm() {
+
+var data = $("#login-form").serialize();
+
+console.log(data);
+
+var xhttp = new XMLHttpRequest();
+
+xhttp.onreadystatechange = function(){
+
+console.log(this.response);
+
+}
+
+xhttp.open('POST','http://54.254.248.136/team-14/service/login/auth.php',true);
+
+xhttp.send(data);
+
+}
+</script>
