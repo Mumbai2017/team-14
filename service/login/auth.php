@@ -1,5 +1,7 @@
 <?php
  require_once '../connection.php';
+ echo json_encode($_POST);
+ exit;
  if(isset($_POST["username"])&&isset($_POST["password"])) {
      $name = $con->real_escape_string($_POST["username"]);
      $password = $con->real_escape_string($_POST["password"]);
@@ -24,7 +26,7 @@
             echo json_encode($output);
         }
         else{
-            $ouptut["code"] = 2;
+            $output["code"] = 2;
             $output["msg"] = "NOt Authenticated";
             echo json_encode($output);
         }
@@ -36,7 +38,7 @@
     }
  }
  else{
-     $ouput["code"] = 2;
+     $output["code"] = 2;
      $output["msg"] = "Invalid Data";
      echo json_encode($output);
  }

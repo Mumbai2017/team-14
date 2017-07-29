@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f7c173a-a6f2-4792-97c9-b832a6b7b939" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/service/feedback/outoutFeedbaclV.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/service/feedback/outputFeedbackLp.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/connection.php" afterPath="$PROJECT_DIR$/service/connection.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/feedback/feedbackVideo.php" afterPath="$PROJECT_DIR$/service/feedback/feedbackVideo.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/feedback/getLPFeeback.php" afterPath="$PROJECT_DIR$/service/feedback/getLPFeeback.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/login.html" afterPath="$PROJECT_DIR$/login.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/login/auth.php" afterPath="$PROJECT_DIR$/service/login/auth.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/video/insertVideo.php" afterPath="$PROJECT_DIR$/service/video/insertVideo.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,42 +15,52 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="connection.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service/connection.php">
+      <file leaf-file-name="auth.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/service/login/auth.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="1" column="30" lean-forward="false" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
+            <state relative-caret-position="63">
+              <caret line="3" column="6" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+              <folding>
+                <element signature="e#76#1606#0#PHP" expanded="false" />
+                <element signature="e#1502#1606#0#PHP" expanded="false" />
+                <marker date="1501368210367" expanded="true" signature="270:312" ph="select * fro... user" />
+                <marker date="1501368210367" expanded="true" signature="270:313" ph="select * fro... user" />
+                <marker date="1501368210367" expanded="true" signature="270:341" ph="select * fro... user" />
+                <marker date="1501368210367" expanded="true" signature="270:344" ph="select * fro... user" />
+                <marker date="1501368210367" expanded="true" signature="270:355" ph="select * fro... user" />
+                <marker date="1501368210367" expanded="true" signature="623:722" ph="SELECT * FRO... roles" />
+                <marker date="1501368210367" expanded="true" signature="623:724" ph="SELECT * FRO... roles" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin-dashboard.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin-dashboard.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-6626">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="auth.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/service/login/auth.php">
+      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="11" column="47" lean-forward="false" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
-              <folding>
-                <marker date="1501366030667" expanded="true" signature="236:278" ph="select * fro... user" />
-                <marker date="1501366030667" expanded="true" signature="236:279" ph="select * fro... user" />
-                <marker date="1501366030667" expanded="true" signature="236:307" ph="select * fro... user" />
-                <marker date="1501366030667" expanded="true" signature="236:310" ph="select * fro... user" />
-                <marker date="1501366030667" expanded="true" signature="236:321" ph="select * fro... user" />
-                <marker date="1501366030667" expanded="true" signature="589:688" ph="SELECT * FRO... roles" />
-                <marker date="1501366030667" expanded="true" signature="589:690" ph="SELECT * FRO... roles" />
-              </folding>
+            <state relative-caret-position="203">
+              <caret line="214" column="31" lean-forward="false" selection-start-line="214" selection-start-column="31" selection-end-line="214" selection-end-column="31" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="feedbackVideo.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service/feedback/feedbackVideo.php">
+      <file leaf-file-name="footer.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/footer.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="1" column="6" lean-forward="true" selection-start-line="1" selection-start-column="6" selection-end-line="2" selection-end-column="34" />
-              <folding>
-                <marker date="1501364126009" expanded="true" signature="377:478" ph="INSERT INTO `feedback_video`... " />
-              </folding>
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -64,7 +69,7 @@
         <entry file="file://$PROJECT_DIR$/service/feedback/feedbackLessonPlan.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="336">
-              <caret line="16" column="29" lean-forward="true" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
+              <caret line="16" column="29" lean-forward="false" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
               <folding>
                 <marker date="1501357985778" expanded="true" signature="367:422" ph="INSERT INTO feedback_lp... " />
                 <marker date="1501357985778" expanded="true" signature="367:449" ph="INSERT INTO feedback_lp... " />
@@ -78,7 +83,7 @@
         <entry file="file://$PROJECT_DIR$/service/users/insertUser.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="84">
-              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -100,7 +105,7 @@
         <entry file="file://$PROJECT_DIR$/service/feedback/getVideoFeedback.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="179">
-              <caret line="11" column="120" lean-forward="true" selection-start-line="11" selection-start-column="120" selection-end-line="11" selection-end-column="120" />
+              <caret line="11" column="120" lean-forward="false" selection-start-line="11" selection-start-column="120" selection-end-line="11" selection-end-column="120" />
               <folding>
                 <marker date="1501363995682" expanded="true" signature="250:347" ph="SELECT * FRO... feedback_video" />
                 <marker date="1501363995682" expanded="true" signature="250:355" ph="SELECT * FRO... feedback_video" />
@@ -165,6 +170,7 @@
         <option value="$PROJECT_DIR$/service/feedback/feedbackVideo.php" />
         <option value="$PROJECT_DIR$/service/video/insertVideo.php" />
         <option value="$PROJECT_DIR$/service/users/insertUser.php" />
+        <option value="$PROJECT_DIR$/login.html" />
         <option value="$PROJECT_DIR$/service/login/auth.php" />
       </list>
     </option>
@@ -214,11 +220,6 @@
               <item name="team-14" type="b2602c69:ProjectViewProjectNode" />
               <item name="team-14" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
-            <path>
-              <item name="team-14" type="b2602c69:ProjectViewProjectNode" />
-              <item name="team-14" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="service" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -230,6 +231,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path" value="A:/nodejs/node" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -253,12 +255,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1501321049822</updated>
-      <workItem from="1501321051088" duration="33188000" />
+      <workItem from="1501321051088" duration="35335000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33188000" />
+    <option name="totallyTimeSpent" value="35335000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -291,7 +293,14 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/service/login/auth.php</url>
+          <line>39</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -354,7 +363,7 @@
     <entry file="file://$PROJECT_DIR$/service/feedback/feedbackVideo.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
-          <caret line="1" column="6" lean-forward="true" selection-start-line="1" selection-start-column="6" selection-end-line="2" selection-end-column="34" />
+          <caret line="1" column="6" lean-forward="false" selection-start-line="1" selection-start-column="6" selection-end-line="2" selection-end-column="34" />
           <folding>
             <marker date="1501364126009" expanded="true" signature="377:478" ph="INSERT INTO `feedback_video`... " />
           </folding>
@@ -396,7 +405,7 @@
     <entry file="file://$PROJECT_DIR$/service/feedback/getVideoFeedback.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
-          <caret line="11" column="120" lean-forward="true" selection-start-line="11" selection-start-column="120" selection-end-line="11" selection-end-column="120" />
+          <caret line="11" column="120" lean-forward="false" selection-start-line="11" selection-start-column="120" selection-end-line="11" selection-end-column="120" />
           <folding>
             <marker date="1501363995682" expanded="true" signature="250:347" ph="SELECT * FRO... feedback_video" />
             <marker date="1501363995682" expanded="true" signature="250:355" ph="SELECT * FRO... feedback_video" />
@@ -407,7 +416,7 @@
     <entry file="file://$PROJECT_DIR$/service/feedback/feedbackLessonPlan.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
-          <caret line="16" column="29" lean-forward="true" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
+          <caret line="16" column="29" lean-forward="false" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
           <folding>
             <marker date="1501357985778" expanded="true" signature="367:422" ph="INSERT INTO feedback_lp... " />
             <marker date="1501357985778" expanded="true" signature="367:449" ph="INSERT INTO feedback_lp... " />
@@ -419,23 +428,49 @@
     <entry file="file://$PROJECT_DIR$/service/users/insertUser.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin-dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6626">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/footer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="214" column="31" lean-forward="false" selection-start-line="214" selection-start-column="31" selection-end-line="214" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/service/login/auth.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="47" lean-forward="false" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
+        <state relative-caret-position="63">
+          <caret line="3" column="6" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
           <folding>
-            <marker date="1501366030667" expanded="true" signature="236:278" ph="select * fro... user" />
-            <marker date="1501366030667" expanded="true" signature="236:279" ph="select * fro... user" />
-            <marker date="1501366030667" expanded="true" signature="236:307" ph="select * fro... user" />
-            <marker date="1501366030667" expanded="true" signature="236:310" ph="select * fro... user" />
-            <marker date="1501366030667" expanded="true" signature="236:321" ph="select * fro... user" />
-            <marker date="1501366030667" expanded="true" signature="589:688" ph="SELECT * FRO... roles" />
-            <marker date="1501366030667" expanded="true" signature="589:690" ph="SELECT * FRO... roles" />
+            <element signature="e#76#1606#0#PHP" expanded="false" />
+            <element signature="e#1502#1606#0#PHP" expanded="false" />
+            <marker date="1501368210367" expanded="true" signature="270:312" ph="select * fro... user" />
+            <marker date="1501368210367" expanded="true" signature="270:313" ph="select * fro... user" />
+            <marker date="1501368210367" expanded="true" signature="270:341" ph="select * fro... user" />
+            <marker date="1501368210367" expanded="true" signature="270:344" ph="select * fro... user" />
+            <marker date="1501368210367" expanded="true" signature="270:355" ph="select * fro... user" />
+            <marker date="1501368210367" expanded="true" signature="623:722" ph="SELECT * FRO... roles" />
+            <marker date="1501368210367" expanded="true" signature="623:724" ph="SELECT * FRO... roles" />
           </folding>
         </state>
       </provider>
