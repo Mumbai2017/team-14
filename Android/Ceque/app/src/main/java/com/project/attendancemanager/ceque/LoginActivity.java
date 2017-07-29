@@ -1,9 +1,11 @@
 package com.project.attendancemanager.ceque;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -47,73 +49,92 @@ public class LoginActivity extends AppCompatActivity {
                     return;
 
                 }
-                String s= null;
-                try {
-                    s = connectPhp(etLoginId.getText().toString(),etPassword.getText().toString());
-                    String data[]=s.split(":");
-                    if(data[0]=="1"){
-                        Intent i=new Intent(LoginActivity.this,MainActivity.class);
-                        startActivity(i);
-                        finish();
-                    }
-                    else{
-                        Toast.makeText(LoginActivity.this, ""+s, Toast.LENGTH_SHORT).show();
-                    }
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
+                LoginConnectPhp l=new LoginConnectPhp();
+                l.execute("http://54.254.248.136:80/team-14/service/login/auth.php",etLoginId.getText().toString(),etPassword.getText().toString());
             }
         });
 
     }
-    public String connectPhp(String loginId,String password) throws UnsupportedEncodingException {
 
-        String data = URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(loginId, "UTF-8");
-        data += URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8");
+    public class LoginConnectPhp extends AsyncTask<String,Void,String>{
 
-        BufferedReader reader=null;
-        try
-        {
-            // Defined URL  where to send data
-            URL url = new URL("http://localhost:8080/httppost.php");
 
-            // Send POST data request
-            URLConnection conn = url.openConnection();
-            conn.setDoOutput(true);
-            OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-            wr.write(data);
-            wr.flush();
+        @Override
+        protected String doInBackground(String... params) {
 
-            // Get the server response
-            reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            StringBuilder sb = new StringBuilder();
-            String line = null;
+            String data = null;
+            try {
+                data = URLEncoder.encode("username", "UTF-8")
+                        + "=" + URLEncoder.encode(params[1], "UTF-8");
 
-            // Read Server Response
-            while((line = reader.readLine()) != null)
-            {
-                // Append server response in string
-                sb.append(line + "\n");
+                data += "&" + URLEncoder.encode("password", "UTF-8") + "="
+                        + URLEncoder.encode(params[2], "UTF-8");
+
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
             }
-            JSONObject jsonObject=new JSONObject(sb.toString());
-            String code=jsonObject.getString("code");
-            String msg=jsonObject.getString("msg");
-            return code+":"+msg;
-        }
-        catch(Exception ex)
-        {
-
-        }
-        finally
-        {
+            BufferedReader reader=null;
             try
             {
+                // Defined URL  where to send data
+                Log.d("T14",data);
+                URL url = new URL(params[0]);
 
-                reader.close();
+                // Send POST data request
+                URLConnection conn = url.openConnection();
+                conn.setDoOutput(true);
+                OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+                wr.write(data);
+                wr.flush();
+
+                // Get the server response
+                reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                StringBuilder sb = new StringBuilder();
+                String line = null;
+
+                // Read Server Response
+                while((line = reader.readLine()) != null)
+                {
+                    // Append server response in string
+                    sb.append(line + "\n");
+                    Log.d("T14",line);
+                }
+                JSONObject jsonObject=new JSONObject(sb.toString());
+                int code=jsonObject.getInt("code");
+                String msg=jsonObject.getString("msg");
+                return code+":"+msg;
+            }
+            catch(Exception ex)
+            {
+
+            }
+            finally
+            {
+                try
+                {
+
+                    reader.close();
+                }
+
+                catch(Exception ex) {}
+            }
+            return "Can't connect to the Internet.";
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            String data[]=s.split(":");
+            Log.d("T14",data[0]);
+            if(data[0].equals("1")){
+                Intent i=new Intent(LoginActivity.this,MainActivity.class);
+                i.putExtra("userid",etLoginId.getText().toString());
+                startActivity(i);
+                finish();
+            }
+            else{
+                Toast.makeText(LoginActivity.this, ""+s, Toast.LENGTH_SHORT).show();
             }
 
-            catch(Exception ex) {}
         }
-        return "";
     }
 }

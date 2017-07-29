@@ -17,10 +17,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity" />
         <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme"></activity>
+            android:name=".UploadActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".LessonsActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".LessonDisplay"></activity>
     </application>
 
 </manifest>
