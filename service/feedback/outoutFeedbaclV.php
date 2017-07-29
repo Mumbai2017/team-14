@@ -11,8 +11,7 @@
     $video_id=$_POST["lp_id"];
 
     $myArray = array();
-    if ($result = $con->query(
-"select feedback from feedback_lp where lp_id=".$video_id."order by ts ";
+    if ($result = $con->query("select feedback from feedback_lp where lp_id=".$video_id."order by ts ");
 
     while($row = $result->fetch_array(MYSQL_ASSOC)) {
             $myArray[] = $row;

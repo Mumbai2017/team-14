@@ -1,13 +1,13 @@
 
  <?php
  require_once '../connection.php';
- if(isset($_POST["comment"])&&isset($_POST["feedback"])){
+ if(isset($_POST["lp_id"])&&isset($_POST["feedback"])&&isset($_POST["sme_id"])){
      //Required Inputs
      $feedback = $con->real_escape_string($_POST["feedback"]);
      $lp_id = $con->real_escape_string($_POST["lp_id"]);
      $sme_id = $con->real_escape_string($_POST["sme_id"]);
      //storing data to the db
-     $sql="INSERT INTO feedback_lp(sme_id,lp_id,feedback) values ($sme_id,$lp_id,$feedback)";
+     $sql="INSERT INTO feedback_lp(sme_id,lp_id,feedback) values ($sme_id,$lp_id,'$feedback')";
      if($con->query($sql)){
          $output["code"] = 1;
          $output["msg"] = "FeedBack Inserted";
