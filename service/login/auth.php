@@ -4,24 +4,22 @@
      //REquired Inputs
      $name = $con->real_escape_string($_POST["username"]);
      $password = $con->real_escape_string($_POST["password"]);
-     $sql = "select * from user where `user_email` like ? and `user_password` like ?";
+     $sql = "select * from user where `user_email` like '$name' and `user_password` like '$password'";
 
-     $stmt = $con->prepare($sql);
-     if($stmt){
-         if($stmt->bind_param("ss",$name,$pasword)){
-             if($stmt->execute()){
-                if($stmt->num_rows >0){
-                    $output["code"] = 1;
-                    $output["msg"]="Authenticated";
-                    session_start();
-
-                    echo json_encode($output);
-                }
-             }
+     if($result = $con->query($sql)){
+         if($result->num_rows >0){
+             $output["code"] = 1;
+             $output["msg"]="Authenticated";
+             echo json_encode($output);
          }
+         else{
 
-
+             $output["code"] = 2;
+             $output["msg"]="Not Authenticated";
+             echo json_encode($output);
+         }
      }
+
 
  }else{
      $output["code"] = 2;
@@ -29,6 +27,4 @@
      echo json_encode($output);
  }
 ?>
-
-//
 
