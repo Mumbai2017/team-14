@@ -6,7 +6,7 @@
      $sql = "select * from user where `user_email` like  '$name' and `user_password` = '$password' ";
     if($result =  $con->query($sql)){
         if($result->num_rows > 0){
-            $ouput["code"] = 1;
+            $output["code"] = 1;
             $output["msg"] = "Authenticated";
             $data = $result->fetch_assoc();
             $sql = "SELECT * FROM  `roles` AS r,  `user_roles` AS ur WHERE ur.`role_id` = r.`role_id` and ur.user_id = ".$data["user_id"];
