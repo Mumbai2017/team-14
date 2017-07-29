@@ -379,13 +379,13 @@
                                     <input type="text" class="form-control" id="deactivate-email" placeholder="Enter user email">
                                 </div>
                                 <div class="box-footer">
-                                    <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                                    <button type="button" onclick="showalert('alertdiv')" class="btn btn-primary pull-right">Submit</button>
                                 </div>
                             </div>
-                            <div class="alert alert-danger alert-dismissible">
+                            <div class="alert alert-danger alert-dismissible" id="alertdiv">
                                 <h4><i class="icon fa fa-ban"></i> Alert!</h4>
                                 The selected user will be deactivated. <br />
-                                Click to continue
+                                <a onclick="deleteUser('alertdiv')">Click to continue</a>
                             </div>
                         </form>
                     </div>
@@ -461,6 +461,15 @@
         <script src="assests/adminlte/js/app.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="assests/adminlte/js/demo.js"></script>
+    
+    <script type="text/javascript">
+        function deleteUser(target) {
+            document.getElementById(target).style.display = 'none';
+        } 
+        function showalert(target) {
+            document.getElementById(target).style.display = 'block';
+        } 
+    </script>
 </body>
 
 </html>
