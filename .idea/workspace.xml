@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f7c173a-a6f2-4792-97c9-b832a6b7b939" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/connection.php" afterPath="$PROJECT_DIR$/service/connection.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/feedback/getLPFeeback.php" afterPath="$PROJECT_DIR$/service/feedback/getLPFeeback.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/login/auth.php" afterPath="$PROJECT_DIR$/service/login/auth.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/video/getVideo.php" afterPath="$PROJECT_DIR$/service/video/getVideo.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/video/insertVideo.php" afterPath="$PROJECT_DIR$/service/video/insertVideo.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,22 +24,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="auth.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="auth.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/service/login/auth.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="17" column="51" lean-forward="false" selection-start-line="17" selection-start-column="51" selection-end-line="17" selection-end-column="51" />
+            <state relative-caret-position="252">
+              <caret line="12" column="11" lean-forward="false" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
               <folding>
-                <marker date="1501358155590" expanded="true" signature="236:278" ph="select * fro... user" />
-                <marker date="1501358155590" expanded="true" signature="236:279" ph="select * fro... user" />
-                <marker date="1501358155590" expanded="true" signature="236:307" ph="select * fro... user" />
-                <marker date="1501358155590" expanded="true" signature="236:313" ph="select * fro... user" />
-                <marker date="1501358155590" expanded="true" signature="236:324" ph="select * fro... user" />
-                <marker date="1501358155590" expanded="true" signature="559:568" ph="SELECT * FRO... user_roles" />
-                <marker date="1501358155590" expanded="true" signature="559:657" ph="SELECT * FRO... roles" />
-                <marker date="1501358155590" expanded="true" signature="559:658" ph="SELECT * FRO... roles" />
-                <marker date="1501358155590" expanded="true" signature="559:660" ph="SELECT * FRO... user_roles" />
-                <marker date="1501358155590" expanded="true" signature="559:678" ph="SELECT * FRO... roles" />
+                <marker date="1501360808084" expanded="true" signature="236:278" ph="select * fro... user" />
+                <marker date="1501360808084" expanded="true" signature="236:279" ph="select * fro... user" />
+                <marker date="1501360808084" expanded="true" signature="236:307" ph="select * fro... user" />
+                <marker date="1501360808084" expanded="true" signature="236:313" ph="select * fro... user" />
+                <marker date="1501360808084" expanded="true" signature="236:324" ph="select * fro... user" />
+                <marker date="1501360808084" expanded="true" signature="543:644" ph="SELECT * FRO... roles" />
+                <marker date="1501360808084" expanded="true" signature="543:646" ph="SELECT * FRO... roles" />
               </folding>
             </state>
           </provider>
@@ -60,7 +54,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getLPFeeback.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="getLPFeeback.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/service/feedback/getLPFeeback.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="378">
@@ -157,12 +151,12 @@
         <option value="$PROJECT_DIR$/service/feedback/outputFeedbackLp.php" />
         <option value="$PROJECT_DIR$/service/feedback/outoutFeedbaclV.php" />
         <option value="$PROJECT_DIR$/service/feedback/feedbackLessonPlan.php" />
-        <option value="$PROJECT_DIR$/service/login/auth.php" />
         <option value="$PROJECT_DIR$/service/video/insertVideo.php" />
         <option value="$PROJECT_DIR$/service/connection.php" />
         <option value="$PROJECT_DIR$/service/feedback/getLPlist.php" />
         <option value="$PROJECT_DIR$/service/video/getVideo.php" />
         <option value="$PROJECT_DIR$/service/feedback/getLPFeeback.php" />
+        <option value="$PROJECT_DIR$/service/login/auth.php" />
       </list>
     </option>
   </component>
@@ -268,12 +262,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1501321049822</updated>
-      <workItem from="1501321051088" duration="26972000" />
+      <workItem from="1501321051088" duration="28150000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26972000" />
+    <option name="totallyTimeSpent" value="28150000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -338,25 +332,6 @@
             <marker date="1501357985778" expanded="true" signature="367:422" ph="INSERT INTO feedback_lp... " />
             <marker date="1501357985778" expanded="true" signature="367:449" ph="INSERT INTO feedback_lp... " />
             <marker date="1501357985778" expanded="true" signature="367:477" ph="INSERT INTO feedback_lp... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/login/auth.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="51" lean-forward="false" selection-start-line="17" selection-start-column="51" selection-end-line="17" selection-end-column="51" />
-          <folding>
-            <marker date="1501358155590" expanded="true" signature="236:278" ph="select * fro... user" />
-            <marker date="1501358155590" expanded="true" signature="236:279" ph="select * fro... user" />
-            <marker date="1501358155590" expanded="true" signature="236:307" ph="select * fro... user" />
-            <marker date="1501358155590" expanded="true" signature="236:313" ph="select * fro... user" />
-            <marker date="1501358155590" expanded="true" signature="236:324" ph="select * fro... user" />
-            <marker date="1501358155590" expanded="true" signature="559:568" ph="SELECT * FRO... user_roles" />
-            <marker date="1501358155590" expanded="true" signature="559:657" ph="SELECT * FRO... roles" />
-            <marker date="1501358155590" expanded="true" signature="559:658" ph="SELECT * FRO... roles" />
-            <marker date="1501358155590" expanded="true" signature="559:660" ph="SELECT * FRO... user_roles" />
-            <marker date="1501358155590" expanded="true" signature="559:678" ph="SELECT * FRO... roles" />
           </folding>
         </state>
       </provider>
@@ -441,6 +416,22 @@
           <caret line="18" column="46" lean-forward="false" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
           <folding>
             <marker date="1501359629858" expanded="true" signature="247:338" ph="SELECT * FRO... feedback_lp" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/login/auth.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="11" lean-forward="false" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+          <folding>
+            <marker date="1501360808084" expanded="true" signature="236:278" ph="select * fro... user" />
+            <marker date="1501360808084" expanded="true" signature="236:279" ph="select * fro... user" />
+            <marker date="1501360808084" expanded="true" signature="236:307" ph="select * fro... user" />
+            <marker date="1501360808084" expanded="true" signature="236:313" ph="select * fro... user" />
+            <marker date="1501360808084" expanded="true" signature="236:324" ph="select * fro... user" />
+            <marker date="1501360808084" expanded="true" signature="543:644" ph="SELECT * FRO... roles" />
+            <marker date="1501360808084" expanded="true" signature="543:646" ph="SELECT * FRO... roles" />
           </folding>
         </state>
       </provider>
