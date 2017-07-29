@@ -1,11 +1,10 @@
 <?php
- const SERVERNAME = "10.49.166.0";
- const USERNAME="";
- const PASSWORD="";
- const  DATABASE="";
+ const SERVERNAME = "localhost";
+ const USERNAME="root";
+const PASSWORD="root";
+ const  DATABASE="ceque";
 
  $con = new mysqli(SERVERNAME,USERNAME,PASSWORD,DATABASE);
-$con->autocommit(false);
  if($con->error){
      die("Connection Error");
  }
