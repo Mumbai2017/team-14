@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 29, 2017 at 02:26 PM
+-- Generation Time: Jul 29, 2017 at 07:37 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -88,10 +88,18 @@ CREATE TABLE `user` (
   `user_firstname` varchar(100) NOT NULL,
   `user_lastname` varchar(100) NOT NULL,
   `user_email` varchar(50) NOT NULL,
-  `user_phone` int(15) NOT NULL,
+  `user_phone` bigint(15) NOT NULL,
   `user_city` varchar(50) NOT NULL,
   `user_password` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `user_firstname`, `user_lastname`, `user_email`, `user_phone`, `user_city`, `user_password`) VALUES
+(1, 'Swapnil', 'Kumbhar', 'swapsk05@gmail.com', 8082022984, 'Mumbai', 'lolboi'),
+(2, 'S', 'K', 'swapnil', 1234567890, 'Mumbai', 'lolboi');
 
 -- --------------------------------------------------------
 
@@ -201,7 +209,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` bigint(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` bigint(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `video`
 --
@@ -210,6 +218,26 @@ ALTER TABLE `video`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `feedback_lp`
+--
+ALTER TABLE `feedback_lp`
+  ADD CONSTRAINT `feedback_lp_ibfk_1` FOREIGN KEY (`sme_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `feedback_lp_ibfk_2` FOREIGN KEY (`lp_id`) REFERENCES `learning_program` (`lp_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `feedback_video`
+--
+ALTER TABLE `feedback_video`
+  ADD CONSTRAINT `feedback_video_ibfk_1` FOREIGN KEY (`sme_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `feedback_video_ibfk_2` FOREIGN KEY (`video_id`) REFERENCES `video` (`video_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `learning_program`
+--
+ALTER TABLE `learning_program`
+  ADD CONSTRAINT `learning_program_ibfk_1` FOREIGN KEY (`teacher_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `roles`
@@ -222,6 +250,13 @@ ALTER TABLE `roles`
 --
 ALTER TABLE `user_roles`
   ADD CONSTRAINT `user_roles_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `video`
+--
+ALTER TABLE `video`
+  ADD CONSTRAINT `video_ibfk_1` FOREIGN KEY (`lp_id`) REFERENCES `learning_program` (`lp_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `video_ibfk_2` FOREIGN KEY (`teacher_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
