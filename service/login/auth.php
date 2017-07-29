@@ -16,7 +16,6 @@
             //Sessions
             session_start();
             $_SESSION["userid"] = $data["user_id"];
-            $_SESSION["name"]= $data["user_email"];
             $_SESSION["role"]= $userrole["role"];
             $_SESSION["name"] = $data["user_lastname"]." ".$data["user_firstname"];
             $_SESSION["email"] = $data["user_email"];

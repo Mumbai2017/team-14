@@ -8,12 +8,13 @@
  require_once '../connection.php';
  if(isset($_POST["lp_id"])){
      //REquired Inputs
-     $lp_id = $con->real_escape_string($_POST["lp_id"]);
+     $lpid = $con->real_escape_string($_POST["lp_id"]);
      $sql = "SELECT * FROM  `feedback_lp` AS fv, user AS u WHERE fv.sme_id = u.user_id AND fv.`lp_id` = $lpid";
-     $result = $con->query();
+     echo $sql;
+     $result = $con->query($sql);
      if($result->num_rows > 0 ){
          $output["total"] = $result->num_rows;
-         $output["feedback"] == array();
+         $output["feedback"] = array();
          $output["code"] = 1;
          while($row = $result->fetch_assoc()){
              $temp["id"] = $row["fb_id"];
@@ -28,7 +29,7 @@
      }
      else{
          $output["total"] = $result->num_rows;
-         $output["feedback"] == array();
+         $output["feedback"] = array();
          $output["code"] = 2;
          echo json_encode($output);
      }
