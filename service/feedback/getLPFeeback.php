@@ -8,7 +8,7 @@
  require_once '../connection.php';
  if(isset($_POST["lp_id"])){
      //REquired Inputs
-     $lp_id = $con->real_escape_string($$_POST["lp_id"]);
+     $lp_id = $con->real_escape_string($_POST["lp_id"]);
      $sql = "SELECT * FROM  `feedback_lp` AS fv, user AS u WHERE fv.sme_id = u.user_id AND fv.`lp_id` = $lpid";
      $result = $con->query();
      if($result->num_rows > 0 ){

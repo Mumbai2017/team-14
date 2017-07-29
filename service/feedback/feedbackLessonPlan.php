@@ -3,9 +3,9 @@
  require_once '../connection.php';
  if(isset($_POST["comment"])&&isset($_POST["feedback"])){
      //Required Inputs
-     $feedback = $con->real_escape_string($$_POST["feedback"]);
-     $lp_id = $con->real_escape_string($$_POST["lp_id"]);
-     $sme_id = $con->real_escape_string($$_POST["sme_id"]);
+     $feedback = $con->real_escape_string($_POST["feedback"]);
+     $lp_id = $con->real_escape_string($_POST["lp_id"]);
+     $sme_id = $con->real_escape_string($_POST["sme_id"]);
      //storing data to the db
      $sql="INSERT INTO feedback_lp(sme_id,lp_id,feedback) values ($sme_id,$lp_id,$feedback)";
      if($con->query($sql)){
