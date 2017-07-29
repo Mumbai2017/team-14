@@ -9,3 +9,4 @@ $con->autocommit(false);
  if($con->error){
      die("Connection Error");
  }
+ echo "Connection Established";
