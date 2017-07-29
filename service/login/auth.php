@@ -12,7 +12,10 @@
              if($stmt->execute()){
                 if($stmt->num_rows >0){
                     $output["code"] = 1;
-                    $outpu["msg"]="Authenticated";
+                    $output["msg"]="Authenticated";
+                    session_start();
+
+                    echo json_encode($output);
                 }
              }
          }
