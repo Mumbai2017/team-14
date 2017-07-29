@@ -9,6 +9,7 @@
             $output["code"] = 1;
             $output["msg"] = "Authenticated";
             $data = $result->fetch_assoc();
+            $output["userid"]=$data["user_id"];
             $sql = "SELECT * FROM  `roles` AS r,  `user_roles` AS ur WHERE ur.`role_id` = r.`role_id` and ur.user_id = ".$data["user_id"];
             $result = $con->query($sql);
             $userrole = $result->fetch_assoc();
