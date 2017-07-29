@@ -176,11 +176,11 @@
         <h1>Login to CEQUE</h1>
         <form method="post" id="login-form">
             <div class="form-group">
-                <input type="email" class="form-control" placeholder="Username" id="user_email" name="user_email">
+                <input type="email" class="form-control" placeholder="Username" id="username" name="username">
                 <i class="fa fa-user"></i>
             </div>
             <div class="form-group log-status">
-                <input type="password" class="form-control" placeholder="Password" name= "passowrd" id="password">
+                <input type="password" class="form-control" placeholder="Password" name= "password" id="password">
                 <i class="fa fa-lock"></i>
             </div>
             <span class="alert" id="error">Invalid Credentials</span>
@@ -207,14 +207,13 @@
     <script type="text/javascript">
         $('document').ready(function()
         { 
-             /* validation */
-          $("#login-form").validate({
+          /*$("#login-form").validate({
               rules:
            {
            password: {
            required: true,
            },
-           user_email: {
+           username: {
                     required: true,
                     email: true
                     },
@@ -224,13 +223,11 @@
                     password:{
                               required: "please enter your password"
                              },
-                    user_email: "please enter your email address",
+                    username: "please enter your email address",
                },
             submitHandler: submitForm 
                });  
-            /* validation */
-
-            /* login submit */
+*/
             function submitForm()
             {  
            var data = $("#login-form").serialize();
@@ -238,8 +235,9 @@
            $.ajax({
 
            type : 'POST',
-           url  : 'login_process.php',
+           url  : 'service/login/auth.php',
            data : data,
+           dataType:jsonp,
            beforeSend: function()
            { 
             $("#error").fadeOut();
@@ -247,10 +245,11 @@
            },
            success :  function(response)
               {      
-             if(response=="ok"){
+                  
+             if(response.code == 1){
 
               $("#btn-login").html('Logging in');
-              setTimeout(' window.location.href = "home.php"; ',4000);
+              window.location.href = "sme-dashboard.html";
              }
              else{
 
@@ -263,7 +262,6 @@
            });
             return false;
           }
-            /* login submit */
         });
     </script>
 </body>
