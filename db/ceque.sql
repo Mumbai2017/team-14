@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 29, 2017 at 02:26 PM
+-- Generation Time: Jul 29, 2017 at 08:25 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -32,8 +32,8 @@ CREATE TABLE `feedback_lp` (
   `fb_id` bigint(100) NOT NULL,
   `sme_id` bigint(100) NOT NULL,
   `lp_id` bigint(100) NOT NULL,
-  `feedback` blob NOT NULL,
-  `ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `feedback` text CHARACTER SET utf8 NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -47,7 +47,7 @@ CREATE TABLE `feedback_video` (
   `sme_id` bigint(100) NOT NULL,
   `video_id` bigint(100) NOT NULL,
   `feedback` blob NOT NULL,
-  `ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -63,6 +63,7 @@ CREATE TABLE `learning_program` (
   `lp_subject` varchar(50) NOT NULL,
   `lp_grade` varchar(50) NOT NULL,
   `lp_language` varchar(50) NOT NULL,
+  `lp_desc` text CHARACTER SET utf8 NOT NULL,
   `ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -100,8 +101,8 @@ CREATE TABLE `user` (
 --
 
 CREATE TABLE `user_roles` (
-  `user_id` bigint(100) NOT NULL,
-  `role_id` bigint(100) DEFAULT NULL
+  `user_id` bigint(20) NOT NULL,
+  `role_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -113,7 +114,7 @@ CREATE TABLE `user_roles` (
 CREATE TABLE `video` (
   `video_id` bigint(100) NOT NULL,
   `lp_id` bigint(100) NOT NULL,
-  `video_link` varchar(100) NOT NULL,
+  `video_link` varchar(100) CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
   `video_title` varchar(50) NOT NULL,
   `teacher_id` bigint(20) NOT NULL,
   `ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -128,23 +129,23 @@ CREATE TABLE `video` (
 --
 ALTER TABLE `feedback_lp`
   ADD PRIMARY KEY (`fb_id`),
-  ADD UNIQUE KEY `sme_id` (`sme_id`),
-  ADD UNIQUE KEY `lp_id` (`lp_id`);
+  ADD KEY `sme_id` (`sme_id`),
+  ADD KEY `lp_id` (`lp_id`);
 
 --
 -- Indexes for table `feedback_video`
 --
 ALTER TABLE `feedback_video`
   ADD PRIMARY KEY (`fb_id`),
-  ADD UNIQUE KEY `sme_id` (`sme_id`),
-  ADD UNIQUE KEY `video_id` (`video_id`);
+  ADD KEY `sme_id` (`sme_id`),
+  ADD KEY `video_id` (`video_id`);
 
 --
 -- Indexes for table `learning_program`
 --
 ALTER TABLE `learning_program`
   ADD PRIMARY KEY (`lp_id`),
-  ADD UNIQUE KEY `teacher_id` (`teacher_id`);
+  ADD KEY `teacher_id` (`teacher_id`);
 
 --
 -- Indexes for table `roles`
@@ -162,16 +163,17 @@ ALTER TABLE `user`
 -- Indexes for table `user_roles`
 --
 ALTER TABLE `user_roles`
-  ADD UNIQUE KEY `user_id` (`user_id`),
-  ADD UNIQUE KEY `role_id` (`role_id`);
+  ADD KEY `role_id` (`role_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `video`
 --
 ALTER TABLE `video`
   ADD PRIMARY KEY (`video_id`),
-  ADD UNIQUE KEY `lp_id` (`lp_id`),
-  ADD UNIQUE KEY `teacher_id` (`teacher_id`);
+  ADD KEY `lp_id` (`lp_id`),
+  ADD KEY `teacher_id` (`teacher_id`),
+  ADD KEY `lp_id_2` (`lp_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -212,6 +214,26 @@ ALTER TABLE `video`
 --
 
 --
+-- Constraints for table `feedback_lp`
+--
+ALTER TABLE `feedback_lp`
+  ADD CONSTRAINT `feedback_lp_ibfk_1` FOREIGN KEY (`sme_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `feedback_lp_ibfk_2` FOREIGN KEY (`lp_id`) REFERENCES `learning_program` (`lp_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `feedback_video`
+--
+ALTER TABLE `feedback_video`
+  ADD CONSTRAINT `feedback_video_ibfk_1` FOREIGN KEY (`video_id`) REFERENCES `video` (`video_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `feedback_video_ibfk_2` FOREIGN KEY (`sme_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `learning_program`
+--
+ALTER TABLE `learning_program`
+  ADD CONSTRAINT `learning_program_ibfk_1` FOREIGN KEY (`teacher_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE;
+
+--
 -- Constraints for table `roles`
 --
 ALTER TABLE `roles`
@@ -222,6 +244,13 @@ ALTER TABLE `roles`
 --
 ALTER TABLE `user_roles`
   ADD CONSTRAINT `user_roles_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `video`
+--
+ALTER TABLE `video`
+  ADD CONSTRAINT `video_ibfk_1` FOREIGN KEY (`lp_id`) REFERENCES `learning_program` (`lp_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `video_ibfk_2` FOREIGN KEY (`teacher_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
