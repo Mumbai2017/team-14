@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 29, 2017 at 12:42 PM
+-- Generation Time: Jul 29, 2017 at 02:26 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -100,9 +100,8 @@ CREATE TABLE `user` (
 --
 
 CREATE TABLE `user_roles` (
-  `ur_id` bigint(20) NOT NULL,
-  `user_id` bigint(20) NOT NULL,
-  `user_role` varchar(50) NOT NULL
+  `user_id` bigint(100) NOT NULL,
+  `role_id` bigint(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -128,19 +127,24 @@ CREATE TABLE `video` (
 -- Indexes for table `feedback_lp`
 --
 ALTER TABLE `feedback_lp`
-  ADD PRIMARY KEY (`fb_id`);
+  ADD PRIMARY KEY (`fb_id`),
+  ADD UNIQUE KEY `sme_id` (`sme_id`),
+  ADD UNIQUE KEY `lp_id` (`lp_id`);
 
 --
 -- Indexes for table `feedback_video`
 --
 ALTER TABLE `feedback_video`
-  ADD PRIMARY KEY (`fb_id`);
+  ADD PRIMARY KEY (`fb_id`),
+  ADD UNIQUE KEY `sme_id` (`sme_id`),
+  ADD UNIQUE KEY `video_id` (`video_id`);
 
 --
 -- Indexes for table `learning_program`
 --
 ALTER TABLE `learning_program`
-  ADD PRIMARY KEY (`lp_id`);
+  ADD PRIMARY KEY (`lp_id`),
+  ADD UNIQUE KEY `teacher_id` (`teacher_id`);
 
 --
 -- Indexes for table `roles`
@@ -158,13 +162,16 @@ ALTER TABLE `user`
 -- Indexes for table `user_roles`
 --
 ALTER TABLE `user_roles`
-  ADD PRIMARY KEY (`ur_id`);
+  ADD UNIQUE KEY `user_id` (`user_id`),
+  ADD UNIQUE KEY `role_id` (`role_id`);
 
 --
 -- Indexes for table `video`
 --
 ALTER TABLE `video`
-  ADD PRIMARY KEY (`video_id`);
+  ADD PRIMARY KEY (`video_id`),
+  ADD UNIQUE KEY `lp_id` (`lp_id`),
+  ADD UNIQUE KEY `teacher_id` (`teacher_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -196,15 +203,26 @@ ALTER TABLE `roles`
 ALTER TABLE `user`
   MODIFY `user_id` bigint(100) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `user_roles`
---
-ALTER TABLE `user_roles`
-  MODIFY `ur_id` bigint(20) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `video`
 --
 ALTER TABLE `video`
-  MODIFY `video_id` bigint(100) NOT NULL AUTO_INCREMENT;COMMIT;
+  MODIFY `video_id` bigint(100) NOT NULL AUTO_INCREMENT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `roles`
+--
+ALTER TABLE `roles`
+  ADD CONSTRAINT `roles_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `user_roles` (`role_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `user_roles`
+--
+ALTER TABLE `user_roles`
+  ADD CONSTRAINT `user_roles_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
