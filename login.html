@@ -91,7 +91,7 @@
         
         .log-btn {
             background: #0AC986;
-            dispaly: inline-block;
+            display: inline-block;
             width: 100%;
             font-size: 16px;
             height: 50px;
@@ -174,7 +174,7 @@
 <body>
     <div class="login-form">
         <h1>Login to CEQUE</h1>
-        <form method="post" id="login-form">
+        <form id="login-form">
             <div class="form-group">
                 <input type="email" class="form-control" placeholder="Username" id="username" name="username">
                 <i class="fa fa-user"></i>
@@ -204,7 +204,47 @@
         });
     </script>-->
 
-    < script type = "text/javascript" >
+    <script type = "text/javascript">
+        $("#login-form").submit(function(e){
+            e.preventDefault();
+            var data = $("#login-form").serialize();
+            //console.log("sample");
+            $.ajax({
+                type: 'POST',
+                url: 'service/login/auth.php',
+                data: data,
+                dataType: "jsonp",
+                beforeSend: function() {
+                    $("#error").fadeOut();
+                    $("#btn-login").html('Signing In');
+                },
+                success: function(response) {
+                    console.log(response);
+                    if (response.code == 1) {
+                        
+                        $("#btn-login").html('Logging in');
+                        //window.location.href = "sme-dashboard.html";
+                    } else {
+                        $('.log-status').addClass('wrong-entry');
+                        $('.alert').fadeIn(500);
+                        setTimeout("$('.alert').fadeOut(1500);", 3000);
+                        
+                        $('.form-control').keypress(function() {
+                            $('.log-status').removeClass('wrong-entry');
+                        });
+/*
+                        $("#error").fadeIn(1000, function() {
+                            $("#error").html('<div class="alert alert-danger"> <span class="glyphicon glyphicon-info-sign"></span> &nbsp; ' + response + ' !</div>');
+                            $("#btn-login").html('<span class="glyphicon glyphicon-log-in"></span> &nbsp; Sign In');
+                        });*/
+                    }
+                }
+            });
+            
+        })
+//        function submitForm() {
+//            v
+//        }
     $('document').ready(function() {
         /*$("#login-form").validate({
               rules:
@@ -227,44 +267,7 @@
             submitHandler: submitForm 
                });  
 */
-        function submitForm() {
-            var data = $("#login-form").serialize();
-
-            $.ajax({
-
-                type: 'POST',
-                url: 'service/login/auth.php',
-                data: data,
-                dataType: jsonp,
-                beforeSend: function() {
-                    $("#error").fadeOut();
-                    $("#btn-login").html('Signing In');
-                },
-                success: function(response) {
-
-                    if (response.code == 1) {
-
-                        $("#btn-login").html('Logging in');
-                        window.location.href = "sme-dashboard.html";
-                    } else {
-                        $('.log-btn').click(function() {
-                            $('.log-status').addClass('wrong-entry');
-                            $('.alert').fadeIn(500);
-                            setTimeout("$('.alert').fadeOut(1500);", 3000);
-                        });
-                        $('.form-control').keypress(function() {
-                            $('.log-status').removeClass('wrong-entry');
-                        });
-
-                        $("#error").fadeIn(1000, function() {
-                            $("#error").html('<div class="alert alert-danger"> <span class="glyphicon glyphicon-info-sign"></span> &nbsp; ' + response + ' !</div>');
-                            $("#btn-login").html('<span class="glyphicon glyphicon-log-in"></span> &nbsp; Sign In');
-                        });
-                    }
-                }
-            });
-            return false;
-        }
+        
     }); 
     </script>
 </body>
