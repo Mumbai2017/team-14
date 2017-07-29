@@ -1,8 +1,8 @@
 <?php
- const SERVERNAME = "10.49.166.0";
- const USERNAME="";
+ const SERVERNAME = "https://3adc3326.ngrok.io";
+ const USERNAME="root";
  const PASSWORD="";
- const  DATABASE="";
+ const  DATABASE="ceque";
 
  $con = new mysqli(SERVERNAME,USERNAME,PASSWORD,DATABASE);
 $con->autocommit(false);
