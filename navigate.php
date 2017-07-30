@@ -2,10 +2,10 @@
     require_once("session.php");
 
     switch(strtolower($_SESSION["role"])){
-            "admin":
-            header("location: admin-dashboard.php");
+            case "admin":
+            header("location: admin-dashboard.html");
             break;
-            "sme":
+            case "sme":
             header("location: sme-dashboard.php");
             break;
             default:
