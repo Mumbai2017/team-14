@@ -17,7 +17,7 @@
          $output["code"] = 1;
          while($row = $result->fetch_assoc()){
              $temp["id"] = $row["fb_id"];
-             $temp["name "] = $row["user_firstname"]." ".$row["user_lastname"];
+             $temp["name"] = $row["user_firstname"]." ".$row["user_lastname"];
              $temp["feedback"] = $row["feedback"];
              $temp["time"] = $row["ts"];
              $temp["phone"] = $row["user_phone"];

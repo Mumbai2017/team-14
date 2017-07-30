@@ -1,9 +1,8 @@
 <?php
-
-  include('service/connproc.php');
-
-  $rows = mysqli_query($conn,"SELECT * FROM ceque.learning_program;");
-
+  session_start();
+  include('service/connection.php');
+  $userid  $_SESSION['userid'];
+  $rows = mysqli_query($conn,"SELECT * FROM ceque.learning_program where teacher_id='$userid';");
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +44,45 @@
   <!-- =============================================== -->
 
   <!-- Left side column. contains the sidebar -->
-  <?php include('navbar-sme.php') ?>
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="assests/adminlte/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>Alexander Pierce</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>
+      <!-- search form -->
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search...">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+        </div>
+      </form>
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu">
+        
+        <li><a><i class="fa fa-book"></i> <span>Reviewed Lesson Plans</span></a></li>
+        <li><a><i class="fa fa-book"></i> <span>Reviewed Videos</span></a></li>
+        <li><a><i class="fa fa-book"></i> <span>Review Lesson Plans</span></a></li>
+        <li><a><i class="fa fa-book"></i> <span>Review Videos</span></a></li>
+        <li class="header">LABELS</li>
+        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
 
   <!-- =============================================== -->
 
@@ -59,8 +96,8 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Examples</a></li>
-        <li class="active">Blank page</li>
+        <li><a href="#">SME Dashboard</a></li>
+        <li class="active">Home</li>
       </ol>
     </section>
 
@@ -103,7 +140,7 @@
                   <td><?=$row['lp_language']?></td>
                   <td><?=$td['user_firstname'].' '.$td['user_lastname']?></td>
                 </tr>
-                </tfoot><?php } }?>
+                <?php } }?>
               </table>
             </div>
             <!-- /.box-body -->
@@ -112,10 +149,6 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
-    
- 
-
   <!-- Page Footer -->
   <div id="footer"></div>
   <!-- /.Page Footer -->
