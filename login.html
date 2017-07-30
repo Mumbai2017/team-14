@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -220,6 +221,7 @@
                     $("#btn-login").html('Signing In');
                 },
                 success: function(response) {
+                    console.log("ada");
                     if (response.code == 1) {
                         $("#btn-login").html('Logging in');
                         window.location.href = "navigate.php";
@@ -270,5 +272,4 @@
     }); 
     </script>
 </body>
-
 </html>
