@@ -1,11 +1,9 @@
 <?php
-
-  include('service/connproc.php');
-
-  $rows = mysqli_query($conn,"SELECT * FROM ceque.learning_program;");
-
+  session_start();
+  include('service/connection.php');
+  $userid  $_SESSION['userid'];
+  $rows = mysqli_query($conn,"SELECT * FROM ceque.video where teacher_id='$userid';");
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +43,45 @@
   <!-- =============================================== -->
 
   <!-- Left side column. contains the sidebar -->
-  <?php include('navbar-sme.php') ?>
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="assests/adminlte/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>Alexander Pierce</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>
+      <!-- search form -->
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search...">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+        </div>
+      </form>
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu">
+       
+        <li><a><i class="fa fa-book"></i> <span>Reviewed Lesson Plans</span></a></li>
+        <li><a><i class="fa fa-book"></i> <span>Reviewed Videos</span></a></li>
+        <li><a><i class="fa fa-book"></i> <span>Review Lesson Plans</span></a></li>
+        <li><a><i class="fa fa-book"></i> <span>Review Videos</span></a></li>
+        <li class="header">LABELS</li>
+        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
 
   <!-- =============================================== -->
 
@@ -74,36 +110,35 @@
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
-                <!-- LIST STARTS HERE -->
                 <thead>
                 <tr>
-                  <th>Program Name</th>
-                  <th>Subject</th>
-                  <th>Grade</th>
-                  <th>Date Added</th>
-                  <th>Language</th>
+                  <th>Video Name</th>
+                  <th>Learning Program</th>
+                  <th>Link</th>
                   <th>Teacher</th>
+                  <th>Date Added</th>
                 </tr>
                 </thead>
-                <?php if(mysqli_num_rows($rows) == 0){
-                  echo '<th> No data to show </th><th></th><th></th><th></th><th></th>';
-                }else {?>
-                <tbody>
+              <tbody>
                 <?php 
-                  
-                  while($row = mysqli_fetch_assoc($rows)){
-                    $td = mysqli_fetch_assoc(mysqli_query($conn,'SELECT user_firstname,user_lastname FROM user WHERE user_id = '.$row['teacher_id'].';'));
-                    // print_r($row);
-                  ?>
+                  if(mysqli_num_rows($rows) == 0){
+                    echo '<th>No Results to show </th><th></th><th></th><th></th><th></th>';
+                  }else { 
+                    $data = mysqli_fetch_assoc($rows);
+                    while($row = mysqli_fetch_assoc($rows)){
+
+                      $lp = mysqli_fetch_assoc(mysqli_query($conn,'SELECT * FROM ceque.learning_program WHERE lp_id ='.$row['lp_id'].';'));
+                      $tp = mysqli_fetch_assoc(mysqli_query($conn,'SELECT * FROM ceque.user WHERE user_id = '.$row['teacher_id'].';'));
+                    ?>
                 <tr>
-                  <td><?=$row['lp_name']?></td>
-                  <td><?=$row['lp_subject']?></td>
-                  <td><?=$row['lp_grade']?></td>
+                  <td><?=$row['video_title']?></td>
+                  <td><?=$lp['lp_name']?></td>
+                  <td><a href="<?=$row['video_link']?>">Link</a></td>
+                  <td><?=$tp['user_firstname']." ".$tp['user_lastname']?></td>
                   <td><?=$row['ts']?></td>
-                  <td><?=$row['lp_language']?></td>
-                  <td><?=$td['user_firstname'].' '.$td['user_lastname']?></td>
-                </tr>
-                </tfoot><?php } }?>
+                </tr> 
+                <?php } }?>
+                </tbody>
               </table>
             </div>
             <!-- /.box-body -->
@@ -144,11 +179,11 @@
   $(function () {
     $('#example1').DataTable()
     $('#example2').DataTable({
-      'paging'      : false,
+      'paging'      : true,
       'lengthChange': false,
       'searching'   : false,
-      'ordering'    : false,
-      'info'        : false,
+      'ordering'    : true,
+      'info'        : true,
       'autoWidth'   : false
     })
   })
