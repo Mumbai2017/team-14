@@ -44,7 +44,7 @@ public class LessonsActivity extends AppCompatActivity {
         //Log.d("teacher_id",userid+"");
         lvLessons= (ListView) findViewById(R.id.lvLessons);
         lesson_toolbar= (Toolbar) findViewById(R.id.lessons_toolbar);
-        lesson_toolbar.setTitle("Upload");
+        lesson_toolbar.setTitle("Lessons Uploaded");
         lesson_toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(lesson_toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

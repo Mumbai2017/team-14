@@ -22,10 +22,13 @@ public class UploadActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
+        Intent i=getIntent();
+        String userid=i.getStringExtra("userid2");
+
         ibLessons= (ImageButton) findViewById(R.id.ibLesson);
         ibUpload= (ImageButton) findViewById(R.id.ibUpload);
         upload_toolbar= (Toolbar) findViewById(R.id.upload_toolbar);
-        upload_toolbar.setTitle("Upload");
+        upload_toolbar.setTitle("UploadS");
         upload_toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(upload_toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

@@ -1,10 +1,12 @@
 package com.project.attendancemanager.ceque;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Debug;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -33,12 +35,20 @@ public class LessonDisplay extends AppCompatActivity {
     TextView tvName,tvSubject,tvGrade,tvLanguage,tvDescription,tvFeedback;
     EditText etMsg;
     Button btnSend;
+    Toolbar lesson_display_toolbar;
     ArrayList<String >  feedbackMsg=new ArrayList<>();
     ArrayList<String >  feedbackFrom=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson_display);
+
+        lesson_display_toolbar= (Toolbar) findViewById(R.id.lessons_toolbar);
+        lesson_display_toolbar.setTitle("Lessons");
+        lesson_display_toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(lesson_display_toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         tvFeedback= (TextView) findViewById(R.id.tvFeedback);
         etMsg= (EditText) findViewById(R.id.etMsg);
         btnSend= (Button) findViewById(R.id.btnSend);
@@ -208,7 +218,7 @@ public class LessonDisplay extends AppCompatActivity {
             super.onPostExecute(s);
             String s1="";
             for(int i=0;i<feedbackMsg.size();i++){
-                s1=feedbackMsg.get(i)+feedbackFrom.get(i)+"\n";
+                s1=feedbackFrom.get(i)+": "+feedbackMsg.get(i)+"\n";
             }
             tvFeedback.setText(s1);
             cancel(true);

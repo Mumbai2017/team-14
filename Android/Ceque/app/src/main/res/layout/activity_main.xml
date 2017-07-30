@@ -6,49 +6,37 @@
     android:layout_height="match_parent"
     tools:context="com.project.attendancemanager.ceque.MainActivity">
 
-    <include layout="@layout/appbar_layout" android:id="@+id/main_toolbar"/>
+    <include
+        android:id="@+id/main_toolbar"
+        layout="@layout/appbar_layout"/>
 
-    <ScrollView
+    <Button
+        android:id="@+id/btnUpload"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/main_toolbar"
+        android:background="@drawable/background_button"
+        android:text="Generate Lessons/Video"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/btnLessons"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/btnUpload"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/background_button"
+        android:text="Lesson Plans"
+        android:textColor="@android:color/white" />
+
+    <ListView
+        android:id="@+id/lvVideos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="56dp"
-        >
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="8dp"
-                android:text="Generate Lessons/Video"
-                android:id="@+id/btnUpload"
-                android:background="@drawable/background_button"
-                android:textColor="@android:color/white"
-                />
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="8dp"
-                android:text="Lesson Plans"
-                android:layout_below="@+id/btnUpload"
-                android:id="@+id/btnLessons"
-                android:background="@drawable/background_button"
-                android:textColor="@android:color/white"
-                />
-            <ListView
-                android:layout_marginTop="6dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/btnLessons"
-                android:id="@+id/lvVideos">
+        android:layout_below="@+id/btnLessons"
+        android:layout_marginTop="6dp">
 
-            </ListView>
-
-
-        </RelativeLayout>
-    </ScrollView>
-
-
+    </ListView>
 </RelativeLayout>
+
