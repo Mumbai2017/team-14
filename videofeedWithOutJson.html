@@ -179,25 +179,6 @@ textarea
         
         <div id="video-details">/</div>
         <!-- 2. This code loads the IFrame Player API code asynchronously. -->
-<p id="demo"></p>
-
-<script>
-
-var xmlhttp = new XMLHttpRequest();
-xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        myObj = JSON.parse(this.responseText);
-        vId = myObj.name;
-    }
-};
-xmlhttp.open("GET", "json_demo.txt", true);
-xmlhttp.send();
-
-</script>
-
-
-
-
         <script src="https://www.youtube.com/iframe_api" async></script>
         <script>
             // 3. This function creates an <iframe> (and YouTube player)
@@ -207,8 +188,7 @@ xmlhttp.send();
                 player = new YT.Player('player', {
                     height: '390',
                     width: '640',
-                  //  videoId: 'Oaj8l0lKJoY',
-                  videoId:vId,
+                    videoId: 'Oaj8l0lKJoY',
                     autoplay: 0,
                     events: {
                         'onReady': onPlayerReady,
@@ -217,7 +197,7 @@ xmlhttp.send();
                 });
                setInterval(function () {
                     $("#video-details").html(
-                        " <input type='text'    value='"+player.getCurrentTime()+"'' readonly><br> ");
+                        " <input type='text' value='"+player.getCurrentTime()+"'' readonly><br> ");
                 }, 1000);
             }
             function onPlayerReady(event) {
@@ -234,7 +214,7 @@ xmlhttp.send();
             function onPlayerStateChange(event) {
                 
            var res=player.getCurrentTime();
-        document.getElementsById('curtm').innerHTML = res;
+   //     document.getElementsById('curtm').innerHTML = res;
               }
             function stopVideo() {
                 player.stopVideo();
@@ -251,7 +231,7 @@ xmlhttp.send();
 <textarea rows="4" cols="500" name="feedback"></textarea>
 
 
-  <input type="hidden" name="currentTime" value="">
+  <input type="hidden" name="currentTime" value=" ">
                 <!-- //Call Php function here for inserting the feedback -->
 
 <button id="feedbkBtn"  type ="submit" onclick="#../feedbackv.php">Submit Feedback</button>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_upload"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.project.attendancemanager.ceque.UploadActivity">
+
+    <include layout="@layout/appbar_layout" android:id="@+id/upload_toolbar"/>
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="148dp"
+        android:layout_margin="16dp"
+        app:srcCompat="@drawable/upload"
+        android:layout_below="@+id/upload_toolbar"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/transparent"
+        android:layout_marginTop="36dp"
+        android:id="@+id/ibUpload" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvUploadVideo"
+        android:layout_below="@+id/ibUpload"
+        android:gravity="center"
+        android:textSize="26dp"
+        android:textStyle="bold|italic"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="@string/upload_video"
+        />
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="148dp"
+        android:layout_margin="16dp"
+
+        app:srcCompat="@drawable/clipboard"
+        android:background="@android:color/transparent"
+        android:layout_below="@+id/tvUploadVideo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="72dp"
+        android:id="@+id/ibLesson" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvPlanLesson"
+        android:layout_below="@+id/ibLesson"
+        android:gravity="center"
+        android:textSize="26dp"
+        android:textStyle="bold|italic"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="Plan Lessons"
+        />
+</RelativeLayout>

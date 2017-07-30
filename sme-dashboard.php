@@ -1,13 +1,14 @@
 <?php
+session_start();
+require("service/connection.php");
+if(!isset($_SESSION['userid'])) {
+    header("location:login.html");
+}
+$userid = $_SESSION['userid'];
+$role = $_SESSION['role'];
+$username = $_SESSION["name"];
+$phone = $_SESSION["phone"];
 
-  include('service/connproc.php');
-
-  $rows=mysqli_query($conn,'SELECT * FROM ceque.video');
-
-  //print_r($rows);
-  foreach($rows as $v){
-    echo '$v<BR>';
-  }
 
 ?>
 
@@ -59,7 +60,7 @@
           <img src="assests/adminlte/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p><?=$username?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -261,7 +262,7 @@
     <section class="content-header">
       <h1>
         Your Dashboard
-        <small><?=$_SESSION['name']?></small>
+        <small>it all starts here</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -331,18 +332,11 @@
         </div>
         <!-- ./col -->
       </div>
-  <!-- LIST BEGINS HERE -->
-  
-  <h2>Recent Uploads</h2><br>
+
         <!-- row -->
       <div class="row">
         <div class="col-md-12">
           <!-- The time line -->
-          <?php if(mysqli_num_rows($rows) == 0){
-            echo '<li> No Result </li>';
-          }
-          ?>
-          <?php foreach($rows as $val){ ?>
           <ul class="timeline">
             <!-- timeline time label -->
             <li class="time-label">
@@ -382,8 +376,7 @@
               </div>
             </li>
             <!-- END timeline item -->
-          </ul> 
-          <?php } ?>
+          </ul>
         </div>
         <!-- /.col -->
       </div>

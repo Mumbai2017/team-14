@@ -28,7 +28,11 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.1.1'
     compile 'com.android.support:design:25.1.1'
+<<<<<<< HEAD
+
+=======
     compile 'com.google.apis:google-api-services-youtube:v3-rev183-1.22.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
+>>>>>>> bd332869a65707e362a70f0f5d229817802f2477
 }
