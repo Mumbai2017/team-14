@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('service/connection.php');
+include('service/connproc.php');
 
 $lp_id = $_GET['lp_id'];
 
