@@ -26,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText etLoginId,etPassword;
     Button btnLogin;
     TextInputLayout tilPassword,tilLoginId;
+    int userid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,10 +48,10 @@ public class LoginActivity extends AppCompatActivity {
                 if(etPassword.getText().toString().equals("")){
                     tilPassword.setError("Enter Password");
                     return;
-
                 }
                 LoginConnectPhp l=new LoginConnectPhp();
                 l.execute("http://54.254.248.136:80/team-14/service/login/auth.php",etLoginId.getText().toString(),etPassword.getText().toString());
+
             }
         });
 
@@ -77,7 +78,6 @@ public class LoginActivity extends AppCompatActivity {
             try
             {
                 // Defined URL  where to send data
-                Log.d("T14",data);
                 URL url = new URL(params[0]);
 
                 // Send POST data request
@@ -97,11 +97,11 @@ public class LoginActivity extends AppCompatActivity {
                 {
                     // Append server response in string
                     sb.append(line + "\n");
-                    Log.d("T14",line);
                 }
                 JSONObject jsonObject=new JSONObject(sb.toString());
                 int code=jsonObject.getInt("code");
                 String msg=jsonObject.getString("msg");
+                userid=jsonObject.getInt("userid");
                 return code+":"+msg;
             }
             catch(Exception ex)
@@ -112,7 +112,6 @@ public class LoginActivity extends AppCompatActivity {
             {
                 try
                 {
-
                     reader.close();
                 }
 
@@ -124,10 +123,9 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             String data[]=s.split(":");
-            Log.d("T14",data[0]);
             if(data[0].equals("1")){
                 Intent i=new Intent(LoginActivity.this,MainActivity.class);
-                i.putExtra("userid",etLoginId.getText().toString());
+                i.putExtra("user_id",userid);
                 startActivity(i);
                 finish();
             }
@@ -135,6 +133,7 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this, ""+s, Toast.LENGTH_SHORT).show();
             }
 
+            cancel(true);
         }
     }
 }
