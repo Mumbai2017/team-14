@@ -1,9 +1,8 @@
 <?php
-
-  include('service/connproc.php');
-
-  $rows = mysqli_query($conn,"SELECT * FROM ceque.learning_program;");
-
+  session_start();
+  include('service/connection.php');
+  $userid  $_SESSION['userid'];
+  $rows = mysqli_query($conn,"SELECT * FROM ceque.learning_program where teacher_id='$userid';");
 ?>
 
 <!DOCTYPE html>
@@ -97,8 +96,8 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Examples</a></li>
-        <li class="active">Blank page</li>
+        <li><a href="#">SME Dashboard</a></li>
+        <li class="active">Home</li>
       </ol>
     </section>
 
@@ -141,7 +140,7 @@
                   <td><?=$row['lp_language']?></td>
                   <td><?=$td['user_firstname'].' '.$td['user_lastname']?></td>
                 </tr>
-                </tfoot><?php } }?>
+                <?php } }?>
               </table>
             </div>
             <!-- /.box-body -->
@@ -150,10 +149,6 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
-    
- 
-
   <!-- Page Footer -->
   <div id="footer"></div>
   <!-- /.Page Footer -->
