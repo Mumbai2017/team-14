@@ -1,10 +1,3 @@
-<?php
-  session_start();
-  include('service/connection.php');
-  $userid  $_SESSION['userid'];
-  $rows = mysqli_query($conn,"SELECT * FROM ceque.learning_program where teacher_id='$userid';");
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,7 +63,7 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
-        
+ 
         <li><a><i class="fa fa-book"></i> <span>Reviewed Lesson Plans</span></a></li>
         <li><a><i class="fa fa-book"></i> <span>Reviewed Videos</span></a></li>
         <li><a><i class="fa fa-book"></i> <span>Review Lesson Plans</span></a></li>
@@ -96,60 +89,109 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">SME Dashboard</a></li>
-        <li class="active">Home</li>
+        <li><a href="#">Examples</a></li>
+        <li class="active">Blank page</li>
       </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
 
-        <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Data Table With Full Features</h3>
+        <div class="row">
+        <div class="col-md-9">
+          <!-- Box Comment -->
+          <div class="box box-widget">
+            <div class="box-header with-border">
+              <div class="user-block">
+                <span class="username"><a href="#">Jonathan Burke Jr.</a></span>
+                <span class="description">Shared publicly - 7:30 PM Today</span>
+              </div>
+              <!-- /.user-block -->
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <!-- LIST STARTS HERE -->
-                <thead>
-                <tr>
-                  <th>Program Name</th>
-                  <th>Subject</th>
-                  <th>Grade</th>
-                  <th>Date Added</th>
-                  <th>Language</th>
-                  <th>Teacher</th>
-                </tr>
-                </thead>
-                <?php if(mysqli_num_rows($rows) == 0){
-                  echo '<th> No data to show </th><th></th><th></th><th></th><th></th>';
-                }else {?>
-                <tbody>
-                <?php 
-                  
-                  while($row = mysqli_fetch_assoc($rows)){
-                    $td = mysqli_fetch_assoc(mysqli_query($conn,'SELECT user_firstname,user_lastname FROM user WHERE user_id = '.$row['teacher_id'].';'));
-                      $lp_id = $row['lp_id'];
-                    // print_r($row);
-                  ?>
-                <tr onclick="sme-view-lp.php?lp_id='$lp_id'">
-                  <td><?=$row['lp_name']?></td>
-                  <td><?=$row['lp_subject']?></td>
-                  <td><?=$row['lp_grade']?></td>
-                  <td><?=$row['ts']?></td>
-                  <td><?=$row['lp_language']?></td>
-                  <td><?=$td['user_firstname'].' '.$td['user_lastname']?></td>
-                </tr>
-                <?php } }?>
-              </table>
+                <div class="col-md-12">
+            <!-- /.box-header -->
+            <div class="box-body">
+              <dl class="dl-horizontal">
+                <dt>Description lists</dt>
+                <dd>A description list is perfect for defining terms.</dd>
+                <dt>Euismod</dt>
+                <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+                <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+                <dt>Malesuada porta</dt>
+                <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+                <dt>Felis euismod semper eget lacinia</dt>
+                <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
+                  sit amet risus.
+                </dd>
+              </dl>
             </div>
             <!-- /.box-body -->
+        </div>
+
+
+              <!-- Social sharing buttons -->
+              <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
+              <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
+              <span class="pull-right text-muted">45 likes - 2 comments</span>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer box-comments">
+              <div class="box-comment">
+                <!-- User image -->
+
+                <div class="comment-text">
+                      <span class="username">
+                        Maria Gonzales
+                        <span class="text-muted pull-right">8:03 PM Today</span>
+                      </span><!-- /.username -->
+                  It is a long established fact that a reader will be distracted
+                  by the readable content of a page when looking at its layout.
+                </div>
+                <!-- /.comment-text -->
+              </div>
+              <!-- /.box-comment -->
+              <div class="box-comment">
+                <!-- User image -->
+
+                <div class="comment-text">
+                      <span class="username">
+                        Nora Havisham
+                        <span class="text-muted pull-right">8:03 PM Today</span>
+                      </span><!-- /.username -->
+                  The point of using Lorem Ipsum is that it has a more-or-less
+                  normal distribution of letters, as opposed to using
+                  'Content here, content here', making it look like readable English.
+                </div>
+                <!-- /.comment-text -->
+              </div>
+              <!-- /.box-comment -->
+            </div>
+            <!-- /.box-footer -->
+            <div class="box-footer">
+              <form action="#" method="post">
+                <!-- .img-push is used to add margin to elements next to floating images -->
+                <div class="img-push">
+                  <input type="text" class="form-control input-sm" placeholder="Press enter to post comment">
+                </div>
+              </form>
+            </div>
+            <!-- /.box-footer -->
           </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+    
+ 
+
   <!-- Page Footer -->
   <div id="footer"></div>
   <!-- /.Page Footer -->
@@ -178,11 +220,11 @@
   $(function () {
     $('#example1').DataTable()
     $('#example2').DataTable({
-      'paging'      : false,
+      'paging'      : true,
       'lengthChange': false,
       'searching'   : false,
-      'ordering'    : false,
-      'info'        : false,
+      'ordering'    : true,
+      'info'        : true,
       'autoWidth'   : false
     })
   })
