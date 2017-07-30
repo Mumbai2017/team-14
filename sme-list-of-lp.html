@@ -1,3 +1,13 @@
+<?php
+
+  include('service/connproc.php');
+
+  $rows = mysqli_query($conn,"SELECT * FROM ceque.learning_program;");
+
+  print_r($rows);
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -267,15 +277,19 @@
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
+                <!-- LIST STARTS HERE -->
                 <thead>
                 <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
+                  <th>Program Name</th>
+                  <th>Subject</th>
+                  <th>Grade</th>
+                  <th>Date Added</th>
+                  <th>Language</th>
                 </tr>
                 </thead>
+                <?php if(mysqli_num_rows($rows) == 0){
+                  echo '<th> No data to show </th><th></th><th></th><th></th><th></th>';
+                }else { // FOR LOOP HERE?>
                 <tbody>
                 <tr>
                   <td>Trident</td>
@@ -693,7 +707,7 @@
                   <th>Engine version</th>
                   <th>CSS grade</th>
                 </tr>
-                </tfoot>
+                </tfoot><?php } ?>
               </table>
             </div>
             <!-- /.box-body -->
@@ -734,11 +748,11 @@
   $(function () {
     $('#example1').DataTable()
     $('#example2').DataTable({
-      'paging'      : true,
+      'paging'      : false,
       'lengthChange': false,
       'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
+      'ordering'    : false,
+      'info'        : false,
       'autoWidth'   : false
     })
   })

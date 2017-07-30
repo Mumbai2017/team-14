@@ -1,3 +1,16 @@
+<?php
+
+  include('service/connproc.php');
+
+  $rows=mysqli_query($conn,'SELECT * FROM ceque.video');
+
+  //print_r($rows);
+  foreach($rows as $v){
+    echo '$v<BR>';
+  }
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -248,7 +261,7 @@
     <section class="content-header">
       <h1>
         Your Dashboard
-        <small>it all starts here</small>
+        <small><?=$_SESSION['name']?></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -318,11 +331,18 @@
         </div>
         <!-- ./col -->
       </div>
-
+  <!-- LIST BEGINS HERE -->
+  
+  <h2>Recent Uploads</h2><br>
         <!-- row -->
       <div class="row">
         <div class="col-md-12">
           <!-- The time line -->
+          <?php if(mysqli_num_rows($rows) == 0){
+            echo '<li> No Result </li>';
+          }
+          ?>
+          <?php foreach($rows as $val){ ?>
           <ul class="timeline">
             <!-- timeline time label -->
             <li class="time-label">
@@ -362,7 +382,8 @@
               </div>
             </li>
             <!-- END timeline item -->
-          </ul>
+          </ul> 
+          <?php } ?>
         </div>
         <!-- /.col -->
       </div>
