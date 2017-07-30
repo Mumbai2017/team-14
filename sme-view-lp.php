@@ -6,7 +6,6 @@ $lp_id = $_GET['lp_id'];
 
 $sql = mysqli_query($conn,"SELECT * from learning_program where lp_id = $lp_id;");
 
-
 ?>
 
 <!DOCTYPE html>
@@ -161,29 +160,34 @@ $sql = mysqli_query($conn,"SELECT * from learning_program where lp_id = $lp_id;"
               <div class="box-comment">
                 <!-- User image -->
 
+                <?php
+                    $sql2 = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * from feedback_lp where lp_id=".$lp_id.";")); 
+                      <?php
+                  if(mysqli_num_rows($sql2) == 0) {
+                      echo 'No Results to show';
+                  }
+                  else {
+                      $row2 = mysqli_fetch_assoc($sql2);
+                      print_r($row2);
+                      while($row2 = mysqli_fetch_assoc($sql2)) {
+                          $sql3 = mysqli_fetch_assoc(mysqli_query($conn, "SELECT user_firstname, user_lastname from user where user_id=".$row['sme_id'].";")); 
+                          
+                          if(mysqli_num_rows($sql3) == 0) {
+                            echo 'No Results to show';
+                            }
+                          else {
+                              $row3 = mysqli_fetch_assoc($sql3);
+                              print_r($row3);
+                      ?>
+                ?>
                 <div class="comment-text">
                       <span class="username">
-                        Maria Gonzales
-                        <span class="text-muted pull-right">8:03 PM Today</span>
+                        <?=$row3['user_firstname']." ".$row3['user_lastname']; ?>
+                        <span class="text-muted pull-right"><?=$row2['timestamp'] ?></span>
                       </span><!-- /.username -->
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
+                  <?=row2['feedback']?>
                 </div>
-                <!-- /.comment-text -->
-              </div>
-              <!-- /.box-comment -->
-              <div class="box-comment">
-                <!-- User image -->
-
-                <div class="comment-text">
-                      <span class="username">
-                        Nora Havisham
-                        <span class="text-muted pull-right">8:03 PM Today</span>
-                      </span><!-- /.username -->
-                  The point of using Lorem Ipsum is that it has a more-or-less
-                  normal distribution of letters, as opposed to using
-                  'Content here, content here', making it look like readable English.
-                </div>
+                  <?php } } } ?>
                 <!-- /.comment-text -->
               </div>
               <!-- /.box-comment -->
