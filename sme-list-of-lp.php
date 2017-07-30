@@ -1,7 +1,10 @@
 <?php
-  include('service/connproc.php');
-  $rows = mysqli_query($conn,'SELECT * FROM video');
+  session_start();
+  include('service/connection.php');
+  $userid  $_SESSION['userid'];
+  $rows = mysqli_query($conn,"SELECT * FROM ceque.learning_program where teacher_id='$userid';");
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,7 +70,7 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
-       
+        
         <li><a><i class="fa fa-book"></i> <span>Reviewed Lesson Plans</span></a></li>
         <li><a><i class="fa fa-book"></i> <span>Reviewed Videos</span></a></li>
         <li><a><i class="fa fa-book"></i> <span>Review Lesson Plans</span></a></li>
@@ -93,8 +96,8 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Examples</a></li>
-        <li class="active">Blank page</li>
+        <li><a href="#">SME Dashboard</a></li>
+        <li class="active">Home</li>
       </ol>
     </section>
 
@@ -108,35 +111,37 @@
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
+                <!-- LIST STARTS HERE -->
                 <thead>
                 <tr>
-                  <th>Video Name</th>
-                  <th>Learning Program</th>
-                  <th>Link</th>
-                  <th>Teacher</th>
+                  <th>Program Name</th>
+                  <th>Subject</th>
+                  <th>Grade</th>
                   <th>Date Added</th>
+                  <th>Language</th>
+                  <th>Teacher</th>
                 </tr>
                 </thead>
-              <tbody>
+                <?php if(mysqli_num_rows($rows) == 0){
+                  echo '<th> No data to show </th><th></th><th></th><th></th><th></th>';
+                }else {?>
+                <tbody>
                 <?php 
-                  if(mysqli_num_rows($rows) == 0){
-                    echo '<th>No Results to show </th><th></th><th></th><th></th><th></th>';
-                  }else { 
-                    $data = mysqli_fetch_assoc($rows);
-                    while($row = mysqli_fetch_assoc($rows)){
-
-                      $lp = mysqli_fetch_assoc(mysqli_query($conn,'SELECT * FROM ceque.learning_program WHERE lp_id ='.$row['lp_id'].';'));
-                      $tp = mysqli_fetch_assoc(mysqli_query($conn,'SELECT * FROM ceque.user WHERE user_id = '.$row['teacher_id'].';'));
-                    ?>
-                <tr>
-                  <td><?=$row['video_title']?></td>
-                  <td><?=$lp['lp_name']?></td>
-                  <td><a href="<?=$row['video_link']?>">Link</a></td>
-                  <td><?=$tp['user_firstname']." ".$tp['user_lastname']?></td>
+                  
+                  while($row = mysqli_fetch_assoc($rows)){
+                    $td = mysqli_fetch_assoc(mysqli_query($conn,'SELECT user_firstname,user_lastname FROM user WHERE user_id = '.$row['teacher_id'].';'));
+                      $lp_id = $row['lp_id'];
+                    // print_r($row);
+                  ?>
+                <tr onclick="window.location.href=sme-view-lp.php?lp_id=<?=$lp_id?>">
+                  <td><?=$row['lp_name']?></td>
+                  <td><?=$row['lp_subject']?></td>
+                  <td><?=$row['lp_grade']?></td>
                   <td><?=$row['ts']?></td>
-                </tr> 
+                  <td><?=$row['lp_language']?></td>
+                  <td><?=$td['user_firstname'].' '.$td['user_lastname']?></td>
+                </tr>
                 <?php } }?>
-                </tbody>
               </table>
             </div>
             <!-- /.box-body -->
@@ -145,10 +150,6 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
-    
- 
-
   <!-- Page Footer -->
   <div id="footer"></div>
   <!-- /.Page Footer -->
@@ -177,11 +178,11 @@
   $(function () {
     $('#example1').DataTable()
     $('#example2').DataTable({
-      'paging'      : true,
+      'paging'      : false,
       'lengthChange': false,
       'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
+      'ordering'    : false,
+      'info'        : false,
       'autoWidth'   : false
     })
   })

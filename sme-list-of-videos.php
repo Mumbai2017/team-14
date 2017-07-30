@@ -1,6 +1,8 @@
 <?php
-  include('service/connproc.php');
-  $rows = mysqli_query($conn,'SELECT * FROM video');
+  session_start();
+  include('service/connection.php');
+  $userid  $_SESSION['userid'];
+  $rows = mysqli_query($conn,"SELECT * FROM ceque.video where teacher_id='$userid';");
 ?>
 <!DOCTYPE html>
 <html>

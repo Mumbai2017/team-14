@@ -1,3 +1,14 @@
+<?php
+session_start();
+include('service/connection.php');
+
+$lp_id = $_GET['lp_id'];
+
+$sql = mysqli_query($conn,"SELECT * from learning_program where lp_id = $lp_id;");
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,11 +44,51 @@
   <!-- Page Header & SideBar -->
   <div id="header"></div>
   <!-- /.Page Header & SideBar -->
-    <?php include('navbar-sme.php'); ?>
+
   <!-- =============================================== -->
 
   <!-- Left side column. contains the sidebar -->
-   <!-- =============================================== -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="assests/adminlte/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>Alexander Pierce</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>
+      <!-- search form -->
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search...">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+        </div>
+      </form>
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu">
+ 
+        <li><a><i class="fa fa-book"></i> <span>Reviewed Lesson Plans</span></a></li>
+        <li><a><i class="fa fa-book"></i> <span>Reviewed Videos</span></a></li>
+        <li><a><i class="fa fa-book"></i> <span>Review Lesson Plans</span></a></li>
+        <li><a><i class="fa fa-book"></i> <span>Review Videos</span></a></li>
+        <li class="header">LABELS</li>
+        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- =============================================== -->
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -70,10 +121,40 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tMWkeBIohBs?start=100"
-                            frameborder="0" allowfullscreen></iframe>
-                  </div>
+                <div class="col-md-12">
+            <!-- /.box-header -->
+            <div class="box-body">
+              <dl class="dl-horizontal">
+                <?php
+                  if(mysqli_num_rows($sql) == 0) {
+                      echo 'No Results to show';
+                  }
+                  else {
+                      $row = mysqli_fetch_assoc($sql);
+                      print_r($row);
+                      ?>
+                <dt>Name of the Plan</dt>
+                <dd><?=$row['lp_name']?></dd>
+                <dt>Subject</dt>
+                <dd><?=$row['lp_subject']?></dd>
+                <dt>Grade</dt>
+                <dd><?=$row['lp_grade']?></dd>
+                <dt>Language</dt>
+                <dd><?=$row['lp_language']?>
+                </dd>
+                  <dt>Description</dt>
+                  <dd><?=$row['lp_desc']?></dd>
+                    }
+              </dl>
+            </div>
+            <!-- /.box-body -->
+        </div>
+
+
+              <!-- Social sharing buttons -->
+              <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
+              <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
+              <span class="pull-right text-muted">45 likes - 2 comments</span>
             </div>
             <!-- /.box-body -->
             <div class="box-footer box-comments">
@@ -112,15 +193,7 @@
               <form action="#" method="post">
                 <!-- .img-push is used to add margin to elements next to floating images -->
                 <div class="img-push">
-                    <div class="col-lg-3 col-md-2 col-sm-12">
-                  <input type="text" class="form-control input-sm" placeholder="Press enter the timestamp">
-                    </div>
-                    <div class="col-lg-6 col-md-8 col-sm-12">
                   <input type="text" class="form-control input-sm" placeholder="Press enter to post comment">
-                    </div>
-                    <div class="col-lg-3 col-md-2 col-sm-12">
-                    <input type="submit" class="btn bg-navy" />
-                    </div>
                 </div>
               </form>
             </div>
@@ -131,58 +204,6 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
-        <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Responsive Hover Table</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body table-responsive no-padding">
-              <table class="table table-hover">
-                <tr>
-                  <th>ID</th>
-                  <th>User</th>
-                  <th>Date</th>
-                  <th>Status</th>
-                  <th>Reason</th>
-                </tr>
-                <tr>
-                  <td>183</td>
-                  <td>John Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-success">Approved</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>219</td>
-                  <td>Alexander Pierce</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-warning">Pending</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>657</td>
-                  <td>Bob Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-primary">Approved</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>175</td>
-                  <td>Mike Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-danger">Denied</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-      </div>
-        
     </section>
     <!-- /.content -->
   </div>
@@ -211,6 +232,22 @@
 <script src="assests/adminlte/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="assests/adminlte/js/demo.js"></script>
+
+<script src="assests/datatables/jquery.dataTables.min.js"></script>
+<script src="assests/datatables/dataTables.bootstrap.js"></script>
     
+<script>
+  $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+</script>
 </body>
 </html>

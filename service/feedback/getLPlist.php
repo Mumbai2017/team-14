@@ -17,7 +17,7 @@ if(isset($_POST["teacherid"])){
         $output["code"] = 1;
         while($row = $result->fetch_assoc()){
             $temp["id"] = $row["lp_id"];
-            $temp["name "] = $row["lp_name"];
+            $temp["name"] = $row["lp_name"];
             $temp["subject"] = $row["lp_subject"];
             $temp["grade"] = $row["lp_grade"];
             $temp["language"] = $row["lp_language"];
