@@ -1,7 +1,7 @@
 <?php
  const SERVERNAME = "localhost";
  const USERNAME="root";
-const PASSWORD="";
+const PASSWORD="root";
  const  DATABASE="ceque";
 
  $con = new mysqli(SERVERNAME,USERNAME,PASSWORD,DATABASE);
