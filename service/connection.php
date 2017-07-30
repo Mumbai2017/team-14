@@ -8,4 +8,3 @@ const PASSWORD="";
  if($con->error){
      die("Connection Error");
  }
-$con->set_charset("utf8");
