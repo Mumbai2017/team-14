@@ -1,3 +1,14 @@
+<?php
+session_start();
+include('service/connection.php');
+
+$lp_id = $_GET['lp_id'];
+
+$sql = mysqli_query($conn,"SELECT * from learning_program where lp_id = $lp_id;");
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -114,17 +125,26 @@
             <!-- /.box-header -->
             <div class="box-body">
               <dl class="dl-horizontal">
-                <dt>Description lists</dt>
-                <dd>A description list is perfect for defining terms.</dd>
-                <dt>Euismod</dt>
-                <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-                <dd>Donec id elit non mi porta gravida at eget metus.</dd>
-                <dt>Malesuada porta</dt>
-                <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-                <dt>Felis euismod semper eget lacinia</dt>
-                <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-                  sit amet risus.
+                <?php
+                  if(mysqli_num_rows($sql) == 0) {
+                      echo 'No Results to show';
+                  }
+                  else {
+                      $row = mysqli_fetch_assoc($sql);
+                      print_r($row);
+                      ?>
+                <dt>Name of the Plan</dt>
+                <dd><?=$row['lp_name']?></dd>
+                <dt>Subject</dt>
+                <dd><?=$row['lp_subject']?></dd>
+                <dt>Grade</dt>
+                <dd><?=$row['lp_grade']?></dd>
+                <dt>Language</dt>
+                <dd><?=$row['lp_language']?>
                 </dd>
+                  <dt>Description</dt>
+                  <dd><?=$row['lp_desc']?></dd>
+                    }
               </dl>
             </div>
             <!-- /.box-body -->
