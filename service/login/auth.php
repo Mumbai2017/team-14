@@ -26,7 +26,7 @@
         }
         else{
             $output["code"] = 2;
-            $output["msg"] = "NOt Authenticated";
+            $output["msg"] = "Not Authenticated";
             echo json_encode($output);
         }
     }
