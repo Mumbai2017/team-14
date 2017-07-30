@@ -18,7 +18,6 @@ if(isset($_POST["phone"])&&isset($_POST["firstname"])&&isset($_POST["lastname"])
     $phone = $con->real_escape_string($_POST["phone"]);
     $email = $con->real_escape_string($_POST["email"]);
 
-
     $sql = "select * from user where user_email = '$email'";
     if($con->query($sql)->num_rows > 0){
         $output["code"] = 2;

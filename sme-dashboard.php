@@ -9,17 +9,10 @@ $role = $_SESSION['role'];
 $username = $_SESSION["name"];
 $phone = $_SESSION["phone"];
 
-$sql = "SELECT user.user_firstname, user.user_lastname, video.video_title, learning_program.lp_subject, learning_program.lp_grade from user, video, learning_program, video.ts where user.user_id=video.teacher_id and video.lp_id=learning_program.lp_id;";
+$sql = "SELECT user.user_firstname, user.user_lastname, video.video_title, learning_program.lp_subject, learning_program.lp_grade from user, video, learning_program, video.ts where user.user_id=video.teacher_id and video.lp_id=learning_program.lp_id orderby video.ts desc limit 5;";
     
-$result = mysql_query($sql);
+$result = $con->query($sql);
 
-if (mysql_num_rows($result) > 0) {
-    // output data of each row
-    while($row=mysql_fetch_assoc($result)) {
-        //echo "Name: " . $row["Name"]. " - Author: " . $row["Author"]. " " . $row["Price"]. "<br>";
-        
- }
-}
 ?>
 
 <!DOCTYPE html>
@@ -345,8 +338,9 @@ if (mysql_num_rows($result) > 0) {
 
         <?php
             if($result->num_rows > 0) {
-            while($result as $row) {
-                
+                while ($row = $result->fetch_assoc()) {
+                    $v = i;
+                }
             }
         ?>
         <!-- row -->
