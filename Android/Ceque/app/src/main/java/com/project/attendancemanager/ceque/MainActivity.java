@@ -1,5 +1,6 @@
 package com.project.attendancemanager.ceque;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -28,22 +29,24 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    Context context=this;
     Button btnUpload,btnLessons;
     ListView lvVideos;
     Toolbar main_toolbar;
     ArrayList<String> allTitles = new ArrayList<>();
     ArrayList<Integer> allId=new ArrayList<>();
+    JSONObject jsonObject;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         main_toolbar= (Toolbar) findViewById(R.id.main_toolbar);
-        main_toolbar.setTitle("Teachers Page");
+        main_toolbar.setTitle("Teachers Video Page");
         main_toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(main_toolbar);
         Intent i=getIntent();
-        final String userid=i.getStringExtra("userid");
+        final String userid=i.getIntExtra("user_id",0)+"";
         btnUpload= (Button) findViewById(R.id.btnUpload);
         lvVideos=(ListView)findViewById(R.id.lvVideos);
         btnLessons=(Button)findViewById(R.id.btnLessons);
@@ -51,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
         btnLessons.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(MainActivity.this,UploadActivity.class);
-                i.putExtra("userid",userid);
+                Intent i=new Intent(MainActivity.this,LessonsActivity.class);
+                i.putExtra("userid1",userid);
                 startActivity(i);
             }
         });
@@ -61,14 +64,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i=new Intent(MainActivity.this,UploadActivity.class);
-                i.putExtra("userid",userid);
+                i.putExtra("userid2",userid);
                 startActivity(i);
             }
         });
 
         Task t=new Task();
-        //t.execute("http://54.254.248.136:80/team-14/",userid);
-
+        t.execute("http://54.254.248.136:80/team-14/service/video/getVideo.php",userid);
 
     }
     public class Task extends AsyncTask<String,Void,String>{
@@ -108,10 +110,9 @@ public class MainActivity extends AppCompatActivity {
                 {
                     // Append server response in string
                     sb.append(line + "\n");
-                    //Log.d("T14",line);
-                }
-                JSONObject jsonObject=new JSONObject(sb.toString());
 
+                }
+                jsonObject=new JSONObject(sb.toString());
 
                 JSONArray cast = jsonObject.getJSONArray("video");
                 for (int i=0; i<cast.length(); i++) {
@@ -131,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
                 {
                     reader.close();
                 }
-
                 catch(Exception ex) {}
             }
             return null;
@@ -142,9 +142,8 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
 
-            ArrayAdapter adapter=new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_expandable_list_item_1,allTitles);
+            ArrayAdapter adapter=new ArrayAdapter<String>(context, android.R.layout.simple_expandable_list_item_1,allTitles);
             lvVideos.setAdapter(adapter);
-
         }
     }
 }
