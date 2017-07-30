@@ -144,7 +144,7 @@ textarea
 <p id="demo"></p>
 
 <script>
-
+//in case of iframe vid will be the src of the video
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -204,9 +204,14 @@ xmlhttp.send();
         </script>
 
         </div>
-        
+        <script>
+document.getElementById("m").src = vId;
+</script>
+
         <!-- /.box-body -->
        
+<iframe id="m" frameborder="0" src=" "></iframe>
+
         <div class="box-body">
                 <!--button for displaying the current video  time -->
 <form enctype='application/json'>

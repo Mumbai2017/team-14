@@ -133,7 +133,7 @@
                       $lp_id = $row['lp_id'];
                     // print_r($row);
                   ?>
-                <tr onclick="sme-view-lp.php?lp_id='$lp_id'">
+                <tr onclick="window.location.href=sme-view-lp.php?lp_id=<?=$lp_id?>">
                   <td><?=$row['lp_name']?></td>
                   <td><?=$row['lp_subject']?></td>
                   <td><?=$row['lp_grade']?></td>
